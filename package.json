@@ -36,8 +36,11 @@
     "electron-prebuilt": "^0.35.1"
   },
   "dependencies": {
+    "leaflet": "^0.7.7",
     "pipboylib": "^1.0.0",
     "react": "^0.14.3",
+    "react-dom": "^0.14.3",
+    "react-leaflet": "^0.9.0",
     "rx": "^4.0.7"
   }
 }

@@ -41,7 +41,7 @@ discover()
     connected(subject)
       .then(handshake => {
         // Create Canvas for Fallout 4 Map
-        const canvas = document.getElementById('map')
+        const canvas = document.getElementById('localmap')
         const context = canvas.getContext('2d')
 
         let image;
@@ -80,18 +80,18 @@ discover()
           })
 
         localmap
-          .filter(map => {
+          .filter(localmap => {
             if (!empty) {
-              empty = new Buffer(map.pixels.length)
+              empty = new Buffer(localmap.pixels.length)
             }
-            return !map.pixels.equals(empty)
+            return !localmap.pixels.equals(empty)
           })
-          .map(map => {
+          .map(localmap => {
             const {
               width,
               height,
               pixels
-            } = map
+            } = localmap
 
             if (!image) {
               image = context.createImageData(width, height)
@@ -113,19 +113,19 @@ discover()
             prev = pixels
             return {
               image,
-              map
+              localmap
             }
           })
           .subscribe(res => {
             const {
               image,
-              map
+              localmap
             } = res
 
-            canvas.height = map.height
-            canvas.width = map.width
-
+            canvas.height = localmap.height
+            canvas.width = localmap.width
             context.globalCompositeOperation = 'source-over'
+
             context.putImageData(image, 0, 0)
             context.globalCompositeOperation = 'multiply'
             context.fillStyle = 'rgb(25, 255, 25)'
@@ -154,3 +154,26 @@ discover()
   .catch(err => {
     throw err
   })
+
+/*
+
+import React from 'react';
+import { render } from 'react-dom';
+import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
+
+const position = [51.505, -0.09];
+const map = (
+  <Map center={position} zoom={13}>
+    <TileLayer
+      url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+      attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    />
+    <Marker position={position}>
+      <Popup>
+        <span>A pretty CSS3 popup.<br/>Easily customizable.</span>
+      </Popup>
+    </Marker>
+  </Map>
+);
+
+render(map, document.getElementById('map-container'));*/
