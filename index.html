@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <title>PipBoy</title>
     <style>
-      html, body {
+      /*html, body {
         margin: 0;
         width: 100%;
         height: 100%;
         overflow: hidden;
-      }
+      }*/
       #localmap {
         background: #000;
       }
@@ -49,9 +49,13 @@
   <body>
     <div id="map-container">
     </div>
-    <canvas id="localmap"></canvas>
-    <div id="arrow">
-      <div class="inner"></div>
+    <div id="map">
+    </div>
+    <div id="localmap-container" style="display:none;">
+      <canvas id="localmap"></canvas>
+      <div id="arrow">
+        <div class="inner"></div>
+      </div>
     </div>
     <script src="src/index.js"></script>
   </body>

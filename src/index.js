@@ -31,6 +31,12 @@ const {
   channels
 } = constants
 
+/*
+import React from 'react';
+import { render } from 'react-dom';
+import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
+*/
+
 discover()
   .then(server => createSocket(server.info.address))
   .then(socket => {
@@ -156,11 +162,6 @@ discover()
   })
 
 /*
-
-import React from 'react';
-import { render } from 'react-dom';
-import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
-
 const position = [51.505, -0.09];
 const map = (
   <Map center={position} zoom={13}>
@@ -175,5 +176,14 @@ const map = (
     </Marker>
   </Map>
 );
+render(map, document.getElementById('map-container'));
+*/
 
-render(map, document.getElementById('map-container'));*/
+import L from 'leaflet';
+
+const position = [0, 0];
+const map = L.map('map').setView(position, 0);
+
+const tilePath = 'http://oyster.ignimgs.com/ignmedia/wikimaps/fallout-4/commonwealth/{z}/{x}-{y}.jpg'
+
+L.tileLayer(tilePath, {}).addTo(map);
