@@ -6,6 +6,7 @@ import { PropTypes, Router, Route, IndexRoute } from 'react-router';
 // Views
 import Map from './views/Map';
 import About from './views/About';
+import DB from './views/DB';
 
 import ServerSelection from './views/ServerSelection';
 import PipBoy from './views/PipBoy';
@@ -128,6 +129,7 @@ render((
       <Route path='pipboy' component={PipBoy}>
         <Route path='map' component={Map}/>
         <Route path='about' component={About}/>
+        <Route path='db' component={DB}/>
       </Route>
     </Route>
   </Router>

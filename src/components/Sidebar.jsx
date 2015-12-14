@@ -99,6 +99,15 @@ export default class Sidebar extends React.Component {
             </li>
 
             <li style={styles.li}>
+              <Link
+                to='/pipboy/db'
+                activeStyle={styles.item.active}
+                style={styles.item.base}>
+                DB
+              </Link>
+            </li>
+
+            <li style={styles.li}>
               <span
                 onClick={this.handleFullscreen}
                 activeStyle={styles.item.active}
